@@ -1,0 +1,285 @@
+/* 全局样式与盒模型重置 */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* 头部导航 - 文字布局完全保留原逻辑 */
+header {
+    background-color: rgb(4, 82, 34);
+    height: 80px;
+    width: 100%;
+    position: relative;
+}
+h1 {
+    color: white;
+    position: absolute;
+    left: 120px;
+    top: 0;
+    line-height: 80px;
+    font-size: 2rem; /* 改用rem适配字体，原无明确尺寸 */
+}
+header ul {
+    position: absolute;
+    right: 5vw;
+    top: 0;
+    line-height: 80px;
+}
+header li {
+    display: inline;
+    margin-right: 4vw;
+}
+header a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+/* 移动端导航适配 - 隐藏菜单但保留文字定位 */
+@media (max-width: 768px) {
+    header ul {
+        display: none;
+    }
+    h1 {
+        left: 5vw; /* 移动端改用相对定位，避免溢出 */
+    }
+}
+
+/* 新闻区块 - 文字布局完全保留 */
+.news {
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    height: 85vh;
+    background-image: url("images/f1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.news h2 {
+    font-size: 80px; /* 保留原像素值，确保PC端布局不变 */
+    text-align: center;
+}
+.news p {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    margin: 25px 0;
+    text-align: center;
+}
+.news a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    border: 2px solid #ACACAC;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/* 新闻区块小屏幕字体适配（仅缩小字体，不改变布局） */
+@media (max-width: 768px) {
+    .news h2 {
+        font-size: 50px;
+    }
+    .news p {
+        font-size: 16px;
+    }
+}
+@media (max-width: 576px) {
+    .news h2 {
+        font-size: 36px;
+    }
+    .news p {
+        font-size: 14px;
+    }
+}
+
+.sloganb {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* 菜单覆盖层 - 文字大小适配 */
+#menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgb(5, 101, 42);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+#menu-overlay ul {
+    position: relative;
+    list-style: none;
+    text-align: center;
+    display: block;
+}
+#menu-overlay ul li a {
+    position: relative;
+    text-decoration: none;
+    font-size: 2.5em;
+    padding: 0 10px;
+    color: black;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+}
+#menu-overlay ul li a:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: white;
+    transform: translateY(-50%) scaleX(0);
+    transform-origin: right;
+    transition: 0.5s transform;
+}
+#menu-overlay ul li a:hover:before {
+    transform: translateY(-50%) scaleX(1);
+    transform-origin: left;
+    transition: 0.5s transform;
+}
+
+/* 图片区块1 - 独立响应式（保留视差滚动） */
+.image_1 {
+    background-image: url("images/img1.png");
+    background-position: 0 0;
+    background-attachment: fixed; /* 保留视差效果 */
+    background-size: cover;
+    height: 680px;
+    width: 100%;
+}
+.image_1 .word {
+    position: relative;
+    top: 480px;
+    font-size: 55px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-weight: bold;
+}
+
+/* 图片1小屏幕适配（仅缩放尺寸，不改变定位） */
+@media (max-width: 768px) {
+    .image_1 {
+        height: 544px; /* 原高度80% */
+    }
+    .image_1 .word {
+        top: 384px; /* 原定位80% */
+        font-size: 44px; /* 原字体80% */
+    }
+}
+@media (max-width: 576px) {
+    .image_1 {
+        height: 340px; /* 原高度50% */
+    }
+    .image_1 .word {
+        top: 240px; /* 原定位50% */
+        font-size: 27.5px; /* 原字体50% */
+    }
+}
+
+/* 图片区块2 - 独立响应式 */
+.image_2 {
+    background-image: url("images/img2.png");
+    background-position: 0 0;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 680px;
+    width: 100%;
+}
+.image_2 .word {
+    position: relative;
+    top: 480px;
+    font-size: 55px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .image_2 {
+        height: 544px;
+    }
+    .image_2 .word {
+        top: 384px;
+        font-size: 44px;
+    }
+}
+@media (max-width: 576px) {
+    .image_2 {
+        height: 340px;
+    }
+    .image_2 .word {
+        top: 240px;
+        font-size: 27.5px;
+    }
+}
+
+/* 图片区块3 - 独立响应式 */
+.image_3 {
+    background-image: url("images/img3.png");
+    background-position: 0 0;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 680px;
+    width: 100%;
+}
+.image_3 .word {
+    position: relative;
+    top: 480px;
+    font-size: 55px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .image_3 {
+        height: 544px;
+    }
+    .image_3 .word {
+        top: 384px;
+        font-size: 44px;
+    }
+}
+@media (max-width: 576px) {
+    .image_3 {
+        height: 340px;
+    }
+    .image_3 .word {
+        top: 240px;
+        font-size: 27.5px;
+    }
+}
+
+/* 底部背景区块 - 文字布局保留 */
+.bg {
+    text-align: center;
+    font-size: 46px;
+    font-weight: bold;
+    height: 220px;
+    line-height: 220px;
+    background-color: rgb(5, 101, 42);
+    color: white;
+}
+
+/* 底部区块小屏幕适配 */
+@media (max-width: 768px) {
+    .bg {
+        font-size: 36px;
+        height: 180px;
+        line-height: 180px;
+    }
+}
+@media (max-width: 576px) {
+    .bg {
+        font-size: 28px;
+        height: 150px;
+        line-height: 150px;
+    }
+}
